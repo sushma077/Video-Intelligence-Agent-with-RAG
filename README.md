@@ -7,49 +7,50 @@ The system leverages Retrieval-Augmented Generation (RAG) with LangChain, Chroma
 
 ## System Architecture
 
-                    INPUT SOURCE
-                          │
-         ┌────────────────┴────────────────┐
-         │                                 │
-   YouTube URL                     Local Video/File
-         │                                 │
-         └──────────────┬──────────────────┘
-                        │
-                Audio Extraction
-                        │
-                WAV Conversion
-                        │
-                 Audio Chunking
-                        │
-        ┌───────────────┴───────────────┐
-        │                               │
-      Whisper                      Sarvam AI
-     (English)                    (Hinglish)
-        │                               │
-        └───────────────┬───────────────┘
-                        │
-                 Full Transcript
-                        │
-      ┌─────────────────┼─────────────────┐
-      │                 │                 │
-      ▼                 ▼                 ▼
+                          INPUT SOURCE
+                                │
+               ┌────────────────┴────────────────┐
+               │                                 │
+         YouTube URL                     Local Video/File
+               │                                 │
+               └──────────────┬──────────────────┘
+                              │
+                      Audio Extraction
+                              │
+                      WAV Conversion
+                              │
+                       Audio Chunking
+                              │
+              ┌───────────────┴───────────────┐
+              │                               │
+            Whisper                      Sarvam AI
+           (English)                    (Hinglish)
+              │                               │
+              └───────────────┬───────────────┘
+                              │
+                       Full Transcript
+                              │
+            ┌─────────────────┼─────────────────┐
+            │                 │                 │
+            ▼                 ▼                 ▼
+      
+        Summarizer     Transcript Analyzer   Vector Store
+            │                 │                 │
+            │                 │            ChromaDB
+            │                 │                 │
+            ▼                 ▼                 ▼
+      
+       Meeting Title    Action Items       Embeddings
+       Summary          Decisions          Retriever
+       Questions             │                 │
+            └────────────────┼─────────────────┘
+                             ▼
+                     Mistral RAG Chain
+                             ▼
+                   Conversational Chat
+                             ▼
+                        Streamlit UI
 
-  Summarizer     Transcript Analyzer   Vector Store
-      │                 │                 │
-      │                 │            ChromaDB
-      │                 │                 │
-      ▼                 ▼                 ▼
 
- Meeting Title    Action Items       Embeddings
- Summary          Decisions          Retriever
- Questions             │                 │
-      └────────────────┼─────────────────┘
-                       ▼
-               Mistral RAG Chain
-                       ▼
-             Conversational Chat
-                       ▼
-                  Streamlit UI
-
-
-## Demo Video Link: https://drive.google.com/drive/folders/1f6sWCuSBbzKQpa8LTugrHjcsRD_9CMV_?usp=sharing
+## Demo Video Link: 
+    https://drive.google.com/drive/folders/1f6sWCuSBbzKQpa8LTugrHjcsRD_9CMV_?usp=sharing
