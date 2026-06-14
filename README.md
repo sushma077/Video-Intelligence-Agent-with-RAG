@@ -1,4 +1,4 @@
-# INSIGHTLENS-Video-Intelligence-Agent-with-RAG
+# INSIGHTLENS: Video-Intelligence-Agent-with-RAG
 
 InsightLens is an AI-powered video intelligence system that transforms long video or audio content into structured, actionable insights. It accepts YouTube links or local media files, extracts audio, transcribes speech using models like OpenAI Whisper and Sarvam AI, and generates concise summaries, titles, action items, key decisions, and open questions.
 
